@@ -64,7 +64,7 @@ sudo ufw enable
 ```
 ---
 
-## Fix RuntimeError: DHTNode bootstrap failed
+## Fix RuntimeError: Hivemind Resource temporarily unavailable
 
 Full error:
 > **RuntimeError: [ERROR] [hivemind.dht.dht._run:130] [Errno 11] Resource temporarily unavailable**
