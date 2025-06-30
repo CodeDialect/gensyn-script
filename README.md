@@ -67,38 +67,17 @@ sudo ufw enable
 ## Fix RuntimeError: DHTNode bootstrap failed
 
 Full error:
-> **RuntimeError: DHTNode bootstrap failed: none of the initial_peers responded to the ping. (set ensure_bootstrap_success=False to ignore)**
+> **RuntimeError: [ERROR] [hivemind.dht.dht._run:130] [Errno 11] Resource temporarily unavailable**
 
-1. Open the file `testnet_grpo_runner.py`
-``` bash
-nano $HOME/rl-swarm/hivemind_exp/runner/grpo_runner.py
+```bash
+sed -i -E 's/(fp16:\s*)false/\1true/; s/(num_train_samples:\s*)2/\11/' $HOME/rl-swarm/configs/rg-swarm.yaml
 ```
 
-3. Find the line:
-`dht = hivemind.DHT(start=True, **self._dht_kwargs(grpo_args))`
 
-4. Replace it with:
-```dht = hivemind.DHT(start=True, ensure_bootstrap_success=False, **self._dht_kwargs(grpo_args))```
-
-5. Save your changes and exit the editor:
-Press `Ctrl+X` and press `Y` to exit.
-
-6. Go to your screen
-```screen -r swarm```
-
-7. Restart the node
+## Restart the node
 Press `Ctrl + C`.
 Run command:
 ```./run_rl_swarm.sh```
-
-
-### OOM errors on MacBook?
-
-Try this (experimental) fix to increase memory:
-
-```bash
-export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 && ./run_rl_swarm.sh
-```
 
 
 ### How to upgrade the node as per new changes in the official repository (Do only If your node is already running if you are new or stopped your node it's fine because script already points to the original repository)
