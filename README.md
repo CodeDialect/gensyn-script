@@ -70,7 +70,8 @@ Full error:
 > **RuntimeError: [ERROR] [hivemind.dht.dht._run:130] [Errno 11] Resource temporarily unavailable**
 
 ```bash
-sed -i -E 's/(fp16:\s*)false/\1true/; s/(num_train_samples:\s*)2/\1 1/' "$HOME/rl-swarm/rgym_exp/config/rg-swarm.yaml"
+sed -i -E 's/(num_train_samples:\s*)2/\1 1/' "$HOME/rl-swarm/rgym_exp/config/rg-swarm.yaml"
+
 ```
 nano 
 
